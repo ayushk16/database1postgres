@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background-color: brown;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+    }
+
+    a {
+        display: block;
+        align-items: center;
+        justify-content: center;
+    }
+
+    button {
+        font-size: 1.2em;
+        height: 30px;
+        width: 500px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div>
+            <a href="http://localhost:3000/api/v1/arduino/percentageOfAnsweredPosts">
+                <button>
+                    1. percentageOfAnsweredPosts
+                </button>
+            </a>
+            <a href="http://localhost:3000/api/v1/arduino/topReputationUser">
+                <button>
+                    2. topReputationUser
+                </button>
+            </a>/mostQuestionAnswered
+            <a href="http://localhost:3000/api/v1/arduino/mostQuestionAnswered">
+                <button>
+                    3. mostQuestionAnswered
+                </button>
+            </a>
+            <a href="http://localhost:3000/api/v1/arduino/topUpvotedPosts">
+                <button>
+                    4. topUpvotedPosts
+                </button>
+            </a>
+            <a href="http://localhost:3000/api/v1/arduino/tagsAssosiatedWithMostPost">
+                <button>
+                    5. tagsAssosiatedWithMostPost
+                </button>
+            </a>
+            <a href="http://localhost:3000/api/v1/arduino/questionsAskedEveryYear">
+                <button>
+                    6. questionsAskedEveryYear
+                </button>
+            </a>
+
+            <a href="http://localhost:3000/api/v1/arduino/mostUsage">
+                <button>
+                    8. mostUsage
+                </button>
+            </a>
+            <a href="http://localhost:3000/api/v1/arduino/scores">
+                <button>
+                    9. scores
+                </button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

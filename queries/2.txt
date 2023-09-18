@@ -1,0 +1,4 @@
+select * 
+	from users
+	order by reputation desc
+	limit 10 ;

@@ -1,0 +1,4 @@
+select (count(*) * 100/(select count(*) from posts where posttypeid=1)) as percentage
+from posts
+where 
+	posttypeid = 1 and acceptedanswerid is not null;

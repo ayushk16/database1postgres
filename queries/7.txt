@@ -1,0 +1,16 @@
+select *  from tags
+join posts ps 
+on ps.id = tags.excerptpostid
+
+where (extract (year from ps.creationdate) = 2014 )
+order by tags.count asc
+having ps.posttypeid = 2
+
+
+
+select tags.* , ps.*  from tags
+join posts ps 
+on ps.id = tags.excerptpostid
+
+where (extract (year from ps.creationdate) = 2014 )
+order by tags.count asc
