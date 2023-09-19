@@ -92,8 +92,8 @@ const getQuestionsAskedEveryYear = (req, res) => {
     })
 }
 
-const getScores = (req, res) => {
-    pool.query(queries.scores, (err, result) => {
+const getQuestionsAssociatedLeastUsedTags = (req, res) => {
+    pool.query(queries.questionsAssociatedLeastUsedTags, (err, result) => {
         if (err) {
             throw err;
         }
@@ -114,6 +114,17 @@ const getMostUsage = (req, res) => {
     })
 }
 
+const getScores = (req, res) => {
+    pool.query(queries.scores, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        else {
+            res.status(200).json(result.rows);
+        }
+    })
+}
+
 module.exports = {
     getData,
     getPostById,
@@ -123,6 +134,7 @@ module.exports = {
     getTopUpvotedPosts,
     getTagsAssosiatedWithMostPost,
     getQuestionsAskedEveryYear,
+    getQuestionsAssociatedLeastUsedTags,
     getMostUsage,
     getScores,
 }

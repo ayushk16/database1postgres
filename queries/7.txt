@@ -1,16 +1,11 @@
-select *  from tags
-join posts ps 
-on ps.id = tags.excerptpostid
+WITH LeastUsedTags AS (
+    SELECT tagname
+    FROM tags
+    ORDER BY COUNT ASC
+	limit 10
+)
 
-where (extract (year from ps.creationdate) = 2014 )
-order by tags.count asc
-having ps.posttypeid = 2
-
-
-
-select tags.* , ps.*  from tags
-join posts ps 
-on ps.id = tags.excerptpostid
-
-where (extract (year from ps.creationdate) = 2014 )
-order by tags.count asc
+SELECT p.*
+FROM posts p
+JOIN tags t ON p.tags LIKE CONCAT('%', t.tagname, '%')
+WHERE t.tagname IN (SELECT tagname FROM LeastUsedTags) and extract(year from p.creationdate)=2014

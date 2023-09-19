@@ -1,24 +1,13 @@
-select avg(usr.upvotes+usr.downvotes) as votePoints , usr.id as usrId  , (count(*) * 3)  from users usr 
+select id ,(upvotes+downvotes+commentwala.commentScore+postwala.postScore)as totalScore  from users userwala
+	inner join (select userid , count(*)*3 as commentScore from comments
+					group by userid
+					order by userid
+			   ) commentwala
+	on commentwala.userid = userwala.id
 
-left outer join (select * from comments) cmt
-on cmt.userid = usr.id
+	inner join (select owneruserid , count(*)*10 as postScore from posts
+		group by owneruserid) postwala
+	on userwala.id = postwala.owneruserid
 
-group by usrId
-
-order by usrId asc
-
-
-
-select id,displayname,upvotes,downvotes,c.comment_count,p.post_count,(c.comment_score+upvotes+downvotes+p.post_score) as total_score from users u
-inner join (select userid,count(*) as comment_count,count(*)*3 as comment_score from comments
-group by userid) c
-on c.userid = u.id
-inner join (select owneruserid, count(*) AS post_count, count(*) * 10 as post_score
-    from posts
-    group by owneruserid) p
-	on p.owneruserid = u.id
-order by total_score desc
-limit  5
-
-
-
+order by totalScore desc
+limit 5;
