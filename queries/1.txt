@@ -1,4 +1,0 @@
-select (count(*) * 100/(select count(*) from posts where answercount is not null)) as percentage
-from posts
-where 
-	posttypeid = 1 and acceptedanswerid is not null;
